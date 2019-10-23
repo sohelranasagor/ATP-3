@@ -4,10 +4,10 @@
 	<title>Home page</title>
 </head>
 <body>
-	<h1>Welcome Admin</h1>
+	<h1>Welcome <%= req.body.username %> </h1>
 
 	<form method="post" >
-		
+		<a href="/logout"> Logout </a>
 	</form>
 </body>
 </html>
