@@ -11,6 +11,7 @@ router.post('/',function(req,res){
         if(req.body.username != "" && req.body.password !="")
         {
             req.session.username = req.body.username;
+            console.log(req.session.username);
             res.redirect('/home');
         }
         else

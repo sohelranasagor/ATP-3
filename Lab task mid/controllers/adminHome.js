@@ -4,7 +4,10 @@ var router = express();
 router.get('/',function(req,res){
     if(req.session.username !="")
     {
-        res.render('home/index');
+        var user = {
+            name :req.session.username
+        }
+        res.render('home/index',user);
     }
     else
     {
