@@ -17,24 +17,44 @@ router.get('*', function(request, response, next){
 	}
 });
 
-router.get('/addcategory',function(request, response){
+router.get('/addproduct',function(request, response){
     response.render('admin/addproduct');
 });
 
-router.post('/addcategory',function(request, response){
-    var user = {
-		category: request.body.category      
-	};
+router.get('/removecustomer',function(request, response){
+    adminModel.getAll(function(results){
+        console.log(results);
+        response.render('admin/removecustomer', {users:results});
+    });
+});
 
-	adminModel.insertCategory(user, function(status){
-		
+router.get('/removecustomer/:custid', function(request, response){
+
+	adminModel.delete(request.params.custid, function(status){	
 		if(status){
-            response.redirect('/addsubcategory');
-			
+			response.redirect("/admin/removecustomer");
 		}else{
-			response.redirect('/admin');
+				
 		}
 	});
 });
+
+router.post('/addproduct',function(request, response){
+    var product={
+        category: request.body.category,
+        subcategory: request.body.subcategory,
+        name: request.body.pname,
+        price: request.body.price,
+        review: request.body.review
+    }
+    adminModel.insert(product, function(status){
+        if(status)
+        {
+            response.redirect('/admin');
+        }
+    });
+});
+
+
 
 module.exports = router;

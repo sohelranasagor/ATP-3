@@ -15,7 +15,6 @@ router.post('/', function(request, response){
         type: request.body.type
         
 	};
-    console.log(user.type);
 	userModel.insert(user, function(status){
 		
 		if(status){
