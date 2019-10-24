@@ -15,8 +15,6 @@ module.exports = {
 			if(result){
                 //console.log(result[0].type);
 				callback(result[0]);
-			}else{
-				callback([]);
 			}
 		});	
 	}

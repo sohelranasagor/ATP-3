@@ -5,6 +5,7 @@ var expSession = require('express-session');
 var login = require('./controllers/login');
 var registration = require('./controllers/registration');
 var customer = require('./controllers/customer');
+var admin = require('./controllers/admin');
 var logout = require('./controllers/logout');
 var app = express();
 
@@ -15,6 +16,7 @@ app.use(expSession({secret:'my top secret value',saveUninitialized:true,resave:f
 app.use('/login', login);
 app.use('/registration', registration);
 app.use('/customer', customer);
+app.use('/admin', admin);
 app.use('/logout', logout);
 
 app.listen(3000,function(){

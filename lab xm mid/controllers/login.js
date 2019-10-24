@@ -7,11 +7,7 @@ router.get('/', function(request, response){
 });
 
 router.post('/', function(request, response){
-    if(request.body.submit)
-    {
-        response.redirect('/registration');
-    }
-    else if(request.body.login)
+    if(request.body.login)
     {
         var user = {
             username: request.body.uname,
@@ -34,11 +30,11 @@ router.post('/', function(request, response){
                     response.redirect('/login');
                 }
             }
+            else
+            {
+                response.redirect('/login');
+            }
         });
-    }
-    else
-    {
-        response.redirect('/login');
     }
 });
 

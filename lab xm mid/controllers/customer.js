@@ -9,4 +9,12 @@ router.get('/', function(request, response){
     response.render('customer/index', {user:data});
 });
 
+router.get('*', function(request, response, next){
+    if(request.session.username != ""){
+		next();
+	}else{
+		response.redirect('/logout');
+	}
+});
+
 module.exports = router;
