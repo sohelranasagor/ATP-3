@@ -10,9 +10,9 @@ module.exports = {
 		});
     },
     validate: function(user, callback){
-		var sql ="select * from login where username=? and password=?";
+		var sql ="select * from user where username=? and password=?";
 		db.getResults(sql, [user.username, user.password], function(result){
-			if(result.length > 0){
+			if(result){
                 //console.log(result[0].type);
 				callback(result[0]);
 			}else{
